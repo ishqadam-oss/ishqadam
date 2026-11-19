@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eef9ff">
+<title>ISHQADAM — Vakansiya joylash</title>
+<style>
+:root{--blue:#168bd2;--deep:#086aa9;--ink:#17324a;--muted:#668096;--line:#d9eaf5}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(145deg,#eaf8ff,#f8fcff 48%,#e4f3ff);min-height:100vh}
+header{position:sticky;top:0;background:#f5fbffeF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.wrap{max-width:900px;margin:auto;padding:0 18px}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:25px;font-weight:850;color:var(--deep)}.brand span{color:#62b9eb}
+a{color:var(--deep);text-decoration:none;font-weight:700}.hero{text-align:center;padding:42px 0 22px}.hero h1{font-size:clamp(30px,6vw,44px);margin:10px 0}.hero p{color:var(--muted);line-height:1.6}
+.panel,.job{background:#ffffffd9;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 14px 35px #4b9bc51a;margin:18px 0}
+label{display:block;font-weight:700;margin:14px 0 6px}input,select,textarea{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink);font:inherit}textarea{min-height:110px;resize:vertical}
+button{border:0;border-radius:13px;padding:13px 18px;font:inherit;font-weight:750;cursor:pointer}.primary{background:linear-gradient(135deg,#26a6eb,#0879bd);color:white;box-shadow:0 8px 20px #138bd333}.muted{color:var(--muted);font-size:14px;line-height:1.5}.notice{background:#fff8e7;border:1px solid #f3dfac;padding:13px;border-radius:12px;color:#73551a;font-size:13px;line-height:1.5;margin:14px 0}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.job h3{margin:8px 0}.tag{display:inline-block;background:#e1f4ff;color:#0878b9;padding:6px 10px;border-radius:9px;font-size:12px}.salary{color:#0878b9;font-weight:800;margin-top:10px}
+@media(max-width:560px){.row{grid-template-columns:1fr}.panel,.job{padding:17px}}
+</style></head>
+<body>
+<header><div class="wrap nav"><div class="brand">ISHQ<span>ADAM</span></div><a href="./">Asosiy sahifaga qaytish</a></div></header>
+<main class="wrap">
+<div class="hero"><div class="tag">ISHQADAM · Yangi imkoniyat</div><h1>Vakansiya joylash</h1><p>Ish beruvchi uchun vakansiya ma’lumotlarini kiriting.</p></div>
+<div class="panel">
+<form id="form">
+<label for="title">Vakansiya nomi *</label><input id="title" maxlength="70" required placeholder="Masalan: Sotuv menejeri">
+<div class="row"><div><label for="region">Hudud *</label><select id="region" required><option value="">Hududni tanlang</option><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Farg‘ona</option><option>Xorazm</option><option>Buxoro</option><option>Andijon</option><option>Namangan</option><option>Qashqadaryo</option><option>Surxondaryo</option><option>Jizzax</option><option>Sirdaryo</option><option>Navoiy</option><option>Qoraqalpog‘iston Respublikasi</option></select></div>
+<div><label for="schedule">Ish turi *</label><select id="schedule"><option value="To‘liq stavka">To‘liq stavka</option><option value="Yarim kunlik">Yarim kunlik</option><option value="Masofaviy">Masofaviy</option><option value="Moslashuvchan">Moslashuvchan</option><option value="Vaqtinchalik">Vaqtinchalik</option></select></div></div>
+<div class="row"><div><label for="pay">Maosh / to‘lov</label><input id="pay" maxlength="45" placeholder="Masalan: 4–6 mln so‘m / oy"></div><div><label for="workers">Kerakli xodimlar soni</label><input id="workers" type="number" min="1" max="500" value="1"></div></div>
+<label for="description">Ish tavsifi va shartlari *</label><textarea id="description" maxlength="1000" required placeholder="Vazifalar, ish vaqti, talablar va shartlarni yozing."></textarea>
+<div class="notice">Bu hozircha bepul mahalliy sinov shakli. Yuborilgan e’lon faqat shu telefon/brauzerda saqlanadi va boshqa tashrif buyuruvchilarga ko‘rinmaydi. Haqiqiy ishga tushirishdan oldin e’lonlar serverga yuborilishi va moderatsiyadan o‘tishi kerak. Shaxsiy telefon raqami, parol yoki maxfiy ma’lumotlarni kiritmang. Voyaga yetmaganlar uchun faqat qonuniy yoshga mos ishlar taklif qilinishi kerak.</div>
+<button class="primary" type="submit">Sinov e’lonini saqlash</button>
+</form></div>
+<section><h2>Shu qurilmada saqlangan e’lonlar</h2><p class="muted">Bu ro‘yxat faqat sizning brauzeringizda ko‘rinadi.</p><div id="jobs"></div></section>
+</main>
+<script>
+const key="ishqadam_local_vacancies_v1";
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function show(){const list=JSON.parse(localStorage.getItem(key)||"[]");const root=document.getElementById("jobs");root.innerHTML="";if(!list.length){root.innerHTML='<p class="muted">Hozircha e’lon yo‘q.</p>';return;}list.forEach((j,i)=>{const el=document.createElement("article");el.className="job";el.innerHTML='<span class="tag">'+esc(j.schedule)+'</span><h3>'+esc(j.title)+'</h3><div class="muted">'+esc(j.region)+' · Xodimlar: '+esc(j.workers)+'</div><div class="salary">'+esc(j.pay||"Kelishiladi")+'</div><p>'+esc(j.description)+'</p>';root.appendChild(el);});}
+document.getElementById("form").addEventListener("submit",e=>{e.preventDefault();const item={title:title.value.trim(),region:region.value,schedule:schedule.value,pay:pay.value.trim(),workers:workers.value,description:description.value.trim(),created:Date.now()};if(!item.title||!item.region||!item.description)return;const list=JSON.parse(localStorage.getItem(key)||"[]");list.unshift(item);localStorage.setItem(key,JSON.stringify(list.slice(0,30)));e.target.reset();workers.value=1;show();alert("Sinov e’loni shu qurilmada saqlandi. U hali ommaviy saytga joylanmadi.");});
+show();
+</script></body></html>
