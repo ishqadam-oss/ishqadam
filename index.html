@@ -105,10 +105,11 @@ function openModal(type) {
       email: f.get("email"),
       password: f.get("password"),
       options: {
-        data: {
-          full_name: f.get("name"),
-          user_type: f.get("role")
-        }
+  emailRedirectTo: "https://ishqadam-oss.github.io/ishqadam/",
+  data: {
+    full_name: f.get("name"),
+    user_type: f.get("role")
+  }
       }
     });
     if (error) {
