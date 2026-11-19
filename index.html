@@ -50,4 +50,15 @@ function details(id){const j=jobInfo[id],d=T[lang];document.getElementById("moda
 function openModal(type){const d=T[lang];document.getElementById("modalTitle").textContent=type==="post"?d.post:d.login;document.getElementById("modalBody").innerHTML='<p>'+d.noAccount+'</p><div class="notice">ISHQADAM — demo</div>';document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
 document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")filterJobs()});
-</script></body></html>
+</script></body></html><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const ISHQADAM_SUPABASE_URL = "https://dvzlchmnyprrphwqjsfe.supabase.co";
+const ISHQADAM_SUPABASE_KEY = "sb_publishable_rs5agJXY1huZGAtv_6TUrA_HAEbvZWi";
+
+const ishqadamDB = window.supabase.createClient(
+  ISHQADAM_SUPABASE_URL,
+  ISHQADAM_SUPABASE_KEY
+);
+
+console.log("ISHQADAM Supabase tayyor");
+</script>
