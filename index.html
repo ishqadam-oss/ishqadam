@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eaf7ff">
+<title>ISHQADAM — Ish topish osonroq</title>
+<style>
+:root{--blue:#168bd2;--deep:#086aa9;--ink:#17324a;--muted:#668096;--line:#d9eaf5;--glass:rgba(255,255,255,.78)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:linear-gradient(145deg,#eaf8ff,#f8fcff 48%,#e4f3ff);min-height:100vh}
+header{position:sticky;top:0;z-index:5;background:rgba(245,251,255,.84);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:25px;font-weight:850;letter-spacing:-1px;color:var(--deep)}.brand span{color:#62b9eb}.links{display:flex;gap:22px;align-items:center}.links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:14px}.btn{border:1px solid #b8dff5;border-radius:13px;padding:11px 16px;background:rgba(255,255,255,.72);color:var(--deep);font-weight:700;cursor:pointer}.primary{background:linear-gradient(135deg,#26a6eb,#0879bd);color:white;border:0;box-shadow:0 8px 20px #138bd333}
+.hero{padding:70px 0 36px;text-align:center}.eyebrow{display:inline-block;background:#d9f1ff;color:#0877b7;border:1px solid #bde6fc;border-radius:99px;padding:7px 13px;font-size:13px;font-weight:700}.hero h1{font-size:clamp(36px,6vw,62px);line-height:1.04;letter-spacing:-2px;margin:20px auto 14px;max-width:800px}.hero h1 em{font-style:normal;color:#168bd2}.hero p{color:var(--muted);font-size:17px;max-width:620px;margin:0 auto 28px;line-height:1.6}
+.search{max-width:850px;margin:0 auto;background:var(--glass);border:1px solid #cce5f5;border-radius:20px;padding:12px;display:grid;grid-template-columns:1fr 1fr auto;gap:10px;box-shadow:0 16px 40px #4b9bc51c}
+input,select{width:100%;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;min-width:0}
+.stats{display:flex;justify-content:center;gap:42px;margin:32px 0;color:var(--muted);font-size:13px}.stats b{display:block;color:var(--ink);font-size:20px}
+section{padding:34px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.section-head h2{font-size:27px;margin:0;letter-spacing:-.7px}.section-head p{margin:6px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 10px 28px #4b9bc511}.tag{font-size:12px;color:#0878b9;background:#e1f4ff;padding:6px 9px;border-radius:8px;display:inline-block}.card h3{margin:13px 0 7px;font-size:19px}.muted{color:var(--muted);font-size:14px}.salary{font-weight:800;color:#0878b9;margin-top:17px}.student{background:linear-gradient(120deg,#dff4ff,#f4fbff);border:1px solid #bfe5f8;border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px}.student h2{margin:0 0 8px}.student p{margin:0;color:var(--muted)}
+footer{padding:32px 0;color:var(--muted);border-top:1px solid var(--line);font-size:13px;margin-top:28px}
+.modal{display:none;position:fixed;inset:0;background:#102b4080;z-index:10;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.dialog{max-width:440px;width:100%;background:white;border-radius:20px;padding:24px;box-shadow:0 24px 70px #102b4050}.dialog h2{margin-top:0}.dialog input{margin:7px 0}.close{float:right;border:0;background:#edf6fb;border-radius:9px;padding:7px 11px}
+@media(max-width:760px){.links a:not(.btn){display:none}.hero{padding:48px 0 24px}.search{grid-template-columns:1fr}.stats{gap:20px}.grid{grid-template-columns:1fr}.student{display:block}.student .btn{margin-top:18px}.section-head{align-items:start;display:block}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand">ISHQ<span>ADAM</span></div><nav class="links"><a href="#jobs">Vakansiyalar</a><a href="#students">Talabalar uchun</a><a href="#employers">Ish beruvchilar</a><button class="btn" onclick="openModal('login')">Kirish</button><button class="btn primary" onclick="openModal('post')">Ish joylash</button></nav></div></header>
+<main class="wrap">
+<div class="hero"><span class="eyebrow">O‘zbekiston bo‘ylab imkoniyatlar</span><h1>Keyingi qadamingiz <em>ISHQADAM</em> bilan</h1><p>Ish qidirish, munosib xodim topish va talabalarga mos ish imkoniyatlarini bir joydan izlang.</p>
+<div class="search"><input id="q" placeholder="Kasb yoki vakansiya nomi"><select id="region"><option value="">Barcha hududlar</option><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Farg‘ona</option><option>Xorazm</option></select><button class="btn primary" onclick="filterJobs()">Qidirish</button></div>
+<div class="stats"><div><b>Butun O‘zbekiston</b>Hududlar</div><div><b>3 til</b>UZ · RU · EN</div><div><b>Bepul</b>Boshlang‘ich foydalanish</div></div></div>
+<section id="jobs"><div class="section-head"><div><h2>Yangi vakansiyalar</h2><p>Namunaviy e’lonlar — sinov uchun</p></div></div><div class="grid" id="jobGrid">
+<article class="card" data-title="Sotuv menejeri" data-region="Toshkent shahri"><span class="tag">To‘liq stavka</span><h3>Sotuv menejeri</h3><div class="muted">Toshkent shahri · Tajriba shart emas</div><div class="salary">4–7 mln so‘m / oy</div></article>
+<article class="card" data-title="Grafik dizayner" data-region="Samarqand"><span class="tag">Masofaviy</span><h3>Grafik dizayner</h3><div class="muted">Samarqand · Portfolio kerak</div><div class="salary">Kelishiladi</div></article>
+<article class="card" data-title="Yordamchi xodim" data-region="Toshkent viloyati"><span class="tag">Moslashuvchan jadval</span><h3>Yordamchi xodim</h3><div class="muted">Toshkent viloyati · Jadval kelishiladi</div><div class="salary">Kunlik to‘lov</div></article>
+</div><p id="empty" class="muted" style="display:none">Mos vakansiya topilmadi.</p></section>
+<section id="students"><div class="student"><div><h2>Talabalar uchun alohida imkoniyatlar</h2><p>Yarim kunlik, dam olish kunlari va masofaviy ishlarni izlash uchun maxsus bo‘lim.</p></div><button class="btn primary" onclick="document.getElementById('q').value='Talabalar';filterJobs()">Vakansiyalarni ko‘rish</button></div></section>
+<section id="employers"><div class="section-head"><div><h2>Ish beruvchimisiz?</h2><p>Jamoangizga kerakli xodimni topish uchun vakansiya tayyorlang.</p></div><button class="btn primary" onclick="openModal('post')">Vakansiya joylash</button></div></section>
+</main>
+<footer><div class="wrap">© 2026 ISHQADAM. Bu dastlabki dizayn prototipi: e’lonlar namunaviy, ro‘yxatdan o‘tish va server xizmatlari hali ulanmagan.</div></footer>
+<div class="modal" id="modal"><div class="dialog"><button class="close" onclick="closeModal()">Yopish</button><h2 id="modalTitle">Kirish</h2><p class="muted" id="modalText">Bu demo oyna. Haqiqiy SMS tasdiqlash hali ulanmagan.</p><input placeholder="Telefon raqami" disabled><button class="btn primary" style="width:100%;margin-top:10px" onclick="closeModal()">Tushunarli</button></div></div>
+<script>
+function filterJobs(){const q=document.getElementById('q').value.toLowerCase(),r=document.getElementById('region').value;let shown=0;document.querySelectorAll('#jobGrid .card').forEach(c=>{const ok=(!q||c.dataset.title.toLowerCase().includes(q))&&(!r||c.dataset.region===r);c.style.display=ok?'block':'none';if(ok)shown++});document.getElementById('empty').style.display=shown?'none':'block'}
+function openModal(type){document.getElementById('modalTitle').textContent=type==='post'?'Vakansiya joylash':'Hisobga kirish';document.getElementById('modalText').textContent='Bu dastlabki prototip. Haqiqiy akkaunt va SMS xizmati hali ulanmagan.';document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+</script>
+</body></html>
