@@ -136,5 +136,29 @@ function openModal(type) {
   };
 }
 </script>
+<script>
+function updateAuthButtons(session) {
+  const login = document.getElementById("loginButton");
+  const logout = document.getElementById("logoutButton");
+  if (!login || !logout) return;
+
+  const signedIn = Boolean(session && session.user);
+  login.hidden = signedIn;
+  logout.hidden = !signedIn;
+}
+
+document.getElementById("logoutButton").onclick = async () => {
+  const { error } = await ishqadamDB.auth.signOut();
+  if (error) alert(error.message);
+};
+
+ishqadamDB.auth.getSession().then(({ data }) => {
+  updateAuthButtons(data.session);
+});
+
+ishqadamDB.auth.onAuthStateChange((_event, session) => {
+  updateAuthButtons(session);
+});
+</script>
 </body>
 </html>
