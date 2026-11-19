@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eef9ff">
+<title>ISHQADAM — Ish topish osonroq</title>
+<style>
+:root{--blue:#168bd2;--deep:#086aa9;--ink:#17324a;--muted:#668096;--line:#d9eaf5;--glass:rgba(255,255,255,.82)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(145deg,#eaf8ff,#f8fcff 48%,#e4f3ff);min-height:100vh}
+header{position:sticky;top:0;z-index:5;background:rgba(245,251,255,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.wrap{max-width:1120px;margin:auto;padding:0 20px}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-size:25px;font-weight:850;letter-spacing:-1px;color:var(--deep);white-space:nowrap}.brand span{color:#62b9eb}.links{display:flex;gap:16px;align-items:center}.links a{color:var(--ink);text-decoration:none;font-weight:650;font-size:14px}.btn{border:1px solid #b8dff5;border-radius:13px;padding:11px 16px;background:rgba(255,255,255,.78);color:var(--deep);font-weight:700;cursor:pointer}.primary{background:linear-gradient(135deg,#26a6eb,#0879bd);color:white;border:0;box-shadow:0 8px 20px #138bd333}.lang{width:auto;padding:9px 10px;font-weight:700}
+.hero{padding:62px 0 30px;text-align:center}.eyebrow{display:inline-block;background:#d9f1ff;color:#0877b7;border:1px solid #bde6fc;border-radius:99px;padding:7px 13px;font-size:13px;font-weight:700}.hero h1{font-size:clamp(36px,6vw,62px);line-height:1.04;letter-spacing:-2px;margin:20px auto 14px;max-width:800px}.hero h1 em{font-style:normal;color:#168bd2}.hero p{color:var(--muted);font-size:17px;max-width:650px;margin:0 auto 28px;line-height:1.6}
+.search{max-width:940px;margin:0 auto;background:var(--glass);border:1px solid #cce5f5;border-radius:20px;padding:12px;display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:9px;box-shadow:0 16px 40px #4b9bc51c}
+input,select{width:100%;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;min-width:0}
+.stats{display:flex;justify-content:center;gap:42px;margin:30px 0;color:var(--muted);font-size:13px}.stats b{display:block;color:var(--ink);font-size:20px}
+section{padding:30px 0}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:18px}.section-head h2{font-size:27px;margin:0;letter-spacing:-.7px}.section-head p{margin:6px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:var(--glass);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 10px 28px #4b9bc511;display:flex;flex-direction:column;min-height:210px}.tag{font-size:12px;color:#0878b9;background:#e1f4ff;padding:6px 9px;border-radius:8px;display:inline-block;align-self:flex-start}.card h3{margin:13px 0 7px;font-size:19px}.muted{color:var(--muted);font-size:14px;line-height:1.5}.salary{font-weight:800;color:#0878b9;margin-top:auto;padding-top:16px}.card-foot{display:flex;gap:8px;margin-top:14px}.small{padding:8px 11px;font-size:13px}
+.student{background:linear-gradient(120deg,#dff4ff,#f4fbff);border:1px solid #bfe5f8;border-radius:22px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px}.student h2{margin:0 0 8px}.student p{margin:0;color:var(--muted)}
+footer{padding:32px 0;color:var(--muted);border-top:1px solid var(--line);font-size:13px;margin-top:28px}
+.modal{display:none;position:fixed;inset:0;background:#102b4080;z-index:10;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.dialog{max-width:520px;width:100%;max-height:90vh;overflow:auto;background:white;border-radius:20px;padding:24px;box-shadow:0 24px 70px #102b4050}.dialog h2{margin-top:0}.dialog input,.dialog select,.dialog textarea{margin:6px 0}.close{float:right;border:0;background:#edf6fb;border-radius:9px;padding:7px 11px;cursor:pointer}.detail-row{padding:10px 0;border-bottom:1px solid var(--line)}.notice{background:#fff8e7;border:1px solid #f3dfac;padding:12px;border-radius:12px;color:#73551a;font-size:13px}
+@media(max-width:800px){.links a:not(.btn){display:none}.search{grid-template-columns:1fr 1fr}.search input{grid-column:1/-1}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.nav{gap:8px}.brand{font-size:22px}.links{gap:7px}.links .btn{padding:9px 10px;font-size:13px}.lang{max-width:66px}.hero{padding:42px 0 20px}.search{grid-template-columns:1fr}.search input{grid-column:auto}.stats{gap:16px}.stats b{font-size:17px}.grid{grid-template-columns:1fr}.student{display:block}.student .btn{margin-top:18px}.section-head{display:block}.card{min-height:0}}
+</style></head>
+<body>
+<header><div class="wrap nav"><div class="brand">ISHQ<span>ADAM</span></div><nav class="links"><a href="#jobs" data-i="navJobs">Vakansiyalar</a><a href="#students" data-i="navStudents">Talabalar</a><a href="#employers" data-i="navEmployers">Ish beruvchilar</a><select class="btn lang" id="lang" aria-label="Language"><option value="uz">UZ</option><option value="ru">RU</option><option value="en">EN</option></select><button class="btn" id="loginButton" data-i="login" onclick="openModal('login')">Kirish</button><button class="btn" id="logoutButton" hidden>Chiqish</button><button class="btn primary" data-i="post" onclick="openModal('post')">Ish joylash</button></nav></div></header>
+<main class="wrap">
+<div class="hero"><span class="eyebrow" data-i="eyebrow">O‘zbekiston bo‘ylab imkoniyatlar</span><h1 data-i="headline">Keyingi qadamingiz <em>ISHQADAM</em> bilan</h1><p data-i="intro">Ish qidirish, munosib xodim topish va talabalarga mos ish imkoniyatlarini bir joydan izlang.</p>
+<div class="search"><input id="q" data-ph="search" placeholder="Kasb yoki vakansiya nomi"><select id="region"><option value="" data-i="allRegions">Barcha hududlar</option><option>Toshkent shahri</option><option>Toshkent viloyati</option><option>Samarqand</option><option>Farg‘ona</option><option>Xorazm</option><option>Buxoro</option><option>Andijon</option><option>Namangan</option></select><select id="schedule"><option value="" data-i="allSchedules">Barcha ish turlari</option><option value="full" data-i="full">To‘liq stavka</option><option value="part" data-i="part">Yarim kunlik</option><option value="remote" data-i="remote">Masofaviy</option><option value="flex" data-i="flex">Moslashuvchan</option></select><button class="btn primary" data-i="searchBtn" onclick="filterJobs()">Qidirish</button></div>
+<div class="stats"><div><b data-i="country">Butun O‘zbekiston</b><span data-i="regions">Hududlar</span></div><div><b>3</b><span data-i="languages">til: UZ · RU · EN</span></div><div><b data-i="free">Bepul</b><span data-i="starter">Boshlang‘ich foydalanish</span></div></div></div>
+<section id="jobs"><div class="section-head"><div><h2 data-i="newJobs">Yangi vakansiyalar</h2><p data-i="sample">Namunaviy e’lonlar — sinov uchun</p></div></div><div class="grid" id="jobGrid">
+<article class="card" data-title="Sotuv menejeri|Менеджер по продажам|Sales manager" data-region="Toshkent shahri" data-schedule="full"><span class="tag" data-i="full">To‘liq stavka</span><h3 data-job="sales">Sotuv menejeri</h3><div class="muted" data-meta="sales">Toshkent shahri · Tajriba shart emas</div><div class="salary">4–7 mln so‘m / oy</div><div class="card-foot"><button class="btn small" data-i="details" onclick="details('sales')">Batafsil</button></div></article>
+<article class="card" data-title="Grafik dizayner|Графический дизайнер|Graphic designer" data-region="Samarqand" data-schedule="remote"><span class="tag" data-i="remote">Masofaviy</span><h3 data-job="designer">Grafik dizayner</h3><div class="muted" data-meta="designer">Samarqand · Portfolio kerak</div><div class="salary">Kelishiladi</div><div class="card-foot"><button class="btn small" data-i="details" onclick="details('designer')">Batafsil</button></div></article>
+<article class="card" data-title="Yordamchi xodim|Помощник|Assistant worker" data-region="Toshkent viloyati" data-schedule="flex"><span class="tag" data-i="flex">Moslashuvchan</span><h3 data-job="assistant">Yordamchi xodim</h3><div class="muted" data-meta="assistant">Toshkent viloyati · Jadval kelishiladi</div><div class="salary">Kunlik to‘lov</div><div class="card-foot"><button class="btn small" data-i="details" onclick="details('assistant')">Batafsil</button></div></article>
+</div><p id="empty" class="muted" style="display:none" data-i="empty">Mos vakansiya topilmadi.</p></section>
+<section id="students"><div class="student"><div><h2 data-i="studentTitle">Talabalar uchun alohida imkoniyatlar</h2><p data-i="studentText">Yarim kunlik, dam olish kunlari va masofaviy ishlarni izlash uchun maxsus bo‘lim.</p></div><button class="btn primary" data-i="studentBtn" onclick="document.getElementById('schedule').value='part';filterJobs()">Talabalar ishlarini ko‘rish</button></div></section>
+<section id="employers"><div class="section-head"><div><h2 data-i="employerTitle">Ish beruvchimisiz?</h2><p data-i="employerText">Jamoangizga kerakli xodimni topish uchun vakansiya tayyorlang.</p></div><button class="btn primary" data-i="post" onclick="openModal('post')">Ish joylash</button></div></section>
+</main><footer><div class="wrap">© 2026 ISHQADAM. <span data-i="disclaimer">Bu sinov prototipi: e’lonlar namunaviy, akkauntlar va server xizmatlari hali ulanmagan.</span></div></footer>
+<div class="modal" id="modal"><div class="dialog"><button class="close" data-i="close" onclick="closeModal()">Yopish</button><h2 id="modalTitle"></h2><div id="modalBody"></div></div></div>
+<script>
+const T={
+uz:{navJobs:"Vakansiyalar",navStudents:"Talabalar",navEmployers:"Ish beruvchilar",login:"Kirish",post:"Ish joylash",eyebrow:"O‘zbekiston bo‘ylab imkoniyatlar",headline:'Keyingi qadamingiz <em>ISHQADAM</em> bilan',intro:"Ish qidirish, munosib xodim topish va talabalarga mos ish imkoniyatlarini bir joydan izlang.",search:"Kasb yoki vakansiya nomi",allRegions:"Barcha hududlar",allSchedules:"Barcha ish turlari",full:"To‘liq stavka",part:"Yarim kunlik",remote:"Masofaviy",flex:"Moslashuvchan",searchBtn:"Qidirish",country:"Butun O‘zbekiston",regions:"Hududlar",languages:"til: UZ · RU · EN",free:"Bepul",starter:"Boshlang‘ich foydalanish",newJobs:"Yangi vakansiyalar",sample:"Namunaviy e’lonlar — sinov uchun",details:"Batafsil",empty:"Mos vakansiya topilmadi.",studentTitle:"Talabalar uchun alohida imkoniyatlar",studentText:"Yarim kunlik, dam olish kunlari va masofaviy ishlarni izlash uchun maxsus bo‘lim.",studentBtn:"Talabalar ishlarini ko‘rish",employerTitle:"Ish beruvchimisiz?",employerText:"Jamoangizga kerakli xodimni topish uchun vakansiya tayyorlang.",disclaimer:"Bu sinov prototipi: e’lonlar namunaviy, akkauntlar va server xizmatlari hali ulanmagan.",close:"Yopish",noAccount:"Bu dastlabki prototip. Haqiqiy ro‘yxatdan o‘tish, SMS va vakansiya yuborish xizmatlari hali ulanmagan.",location:"Hudud",schedule:"Ish turi",pay:"Maosh",description:"Tavsif",sales:"Sotuv menejeri",salesMeta:"Toshkent shahri · Tajriba shart emas",designer:"Grafik dizayner",designerMeta:"Samarqand · Portfolio kerak",assistant:"Yordamchi xodim",assistantMeta:"Toshkent viloyati · Jadval kelishiladi",salarySales:"4–7 mln so‘m / oy",salaryDesigner:"Kelishiladi",salaryAssistant:"Kunlik to‘lov",salesDesc:"Mijozlar bilan ishlash, mahsulot va xizmatlarni tanishtirish. Tajriba talab qilinmaydi; ish shartlari ish beruvchi bilan aniqlashtiriladi.",designerDesc:"Ijtimoiy tarmoqlar va reklama uchun grafik materiallar tayyorlash. Portfolio talab qilinadi.",assistantDesc:"Yordamchi vazifalar. Ish jadvali va vazifalar ish beruvchi bilan oldindan kelishiladi."},
+ru:{navJobs:"Вакансии",navStudents:"Студентам",navEmployers:"Работодателям",login:"Войти",post:"Разместить работу",eyebrow:"Возможности по всему Узбекистану",headline:'Ваш следующий шаг с <em>ISHQADAM</em>',intro:"Ищите работу, находите сотрудников и подходящие студентам возможности на одной платформе.",search:"Профессия или название вакансии",allRegions:"Все регионы",allSchedules:"Все типы работы",full:"Полная занятость",part:"Неполный день",remote:"Удалённо",flex:"Гибкий график",searchBtn:"Поиск",country:"Весь Узбекистан",regions:"Регионы",languages:"языки: UZ · RU · EN",free:"Бесплатно",starter:"На начальном этапе",newJobs:"Новые вакансии",sample:"Примеры объявлений — для тестирования",details:"Подробнее",empty:"Подходящих вакансий не найдено.",studentTitle:"Отдельные возможности для студентов",studentText:"Специальный раздел для поиска неполной занятости, работы по выходным и удалённой работы.",studentBtn:"Работа для студентов",employerTitle:"Вы работодатель?",employerText:"Создайте вакансию, чтобы найти нужного сотрудника.",disclaimer:"Это тестовый прототип: объявления демонстрационные, аккаунты и серверные функции ещё не подключены.",close:"Закрыть",noAccount:"Это ранний прототип. Регистрация, SMS и отправка вакансий пока не подключены.",location:"Регион",schedule:"Тип работы",pay:"Оплата",description:"Описание",sales:"Менеджер по продажам",salesMeta:"Ташкент · Опыт не обязателен",designer:"Графический дизайнер",designerMeta:"Самарканд · Нужно портфолио",assistant:"Помощник",assistantMeta:"Ташкентская область · График обсуждается",salarySales:"4–7 млн сум / месяц",salaryDesigner:"По договорённости",salaryAssistant:"Оплата за день",salesDesc:"Работа с клиентами, презентация товаров и услуг. Опыт не обязателен; условия уточняются у работодателя.",designerDesc:"Подготовка графических материалов для соцсетей и рекламы. Требуется портфолио.",assistantDesc:"Вспомогательные задачи. График и обязанности согласуются заранее."},
+en:{navJobs:"Jobs",navStudents:"Students",navEmployers:"Employers",login:"Sign in",post:"Post a job",eyebrow:"Opportunities across Uzbekistan",headline:'Your next step with <em>ISHQADAM</em>',intro:"Find work, connect with employers and explore student-friendly opportunities in one place.",search:"Profession or job title",allRegions:"All regions",allSchedules:"All work types",full:"Full-time",part:"Part-time",remote:"Remote",flex:"Flexible",searchBtn:"Search",country:"All Uzbekistan",regions:"Regions",languages:"languages: UZ · RU · EN",free:"Free",starter:"At the beginning",newJobs:"Latest vacancies",sample:"Sample listings — for testing",details:"Details",empty:"No matching vacancies found.",studentTitle:"Opportunities for students",studentText:"A dedicated section for part-time, weekend and remote work.",studentBtn:"View student jobs",employerTitle:"Are you an employer?",employerText:"Prepare a vacancy to find the right people for your team.",disclaimer:"This is a test prototype: listings are samples, accounts and server services are not connected yet.",close:"Close",noAccount:"This is an early prototype. Real registration, SMS and job submission are not connected yet.",location:"Location",schedule:"Work type",pay:"Pay",description:"Description",sales:"Sales manager",salesMeta:"Tashkent city · No experience required",designer:"Graphic designer",designerMeta:"Samarkand · Portfolio required",assistant:"Assistant worker",assistantMeta:"Tashkent region · Schedule negotiable",salarySales:"4–7 million UZS / month",salaryDesigner:"Negotiable",salaryAssistant:"Daily pay",salesDesc:"Work with customers and introduce products and services. Experience is not required; confirm conditions with the employer.",designerDesc:"Create graphic materials for social media and advertising. A portfolio is required.",assistantDesc:"Support tasks. Schedule and responsibilities should be agreed with the employer in advance."}
+};
+let lang="uz";
+function applyLang(){lang=document.getElementById("lang").value;const d=T[lang];document.documentElement.lang=lang;document.querySelectorAll("[data-i]").forEach(e=>{const k=e.dataset.i;if(d[k]!==undefined)e.innerHTML=d[k]});document.querySelectorAll("[data-ph]").forEach(e=>e.placeholder=d[e.dataset.ph]||"");document.querySelectorAll("[data-job]").forEach(e=>e.textContent=d[e.dataset.job]);document.querySelectorAll("[data-meta]").forEach(e=>e.textContent=d[e.dataset.meta+"Meta"]);document.querySelectorAll(".salary").forEach((e,i)=>e.textContent=[d.salarySales,d.salaryDesigner,d.salaryAssistant][i]);}
+document.getElementById("lang").addEventListener("change",applyLang);
+function filterJobs(){const q=document.getElementById("q").value.toLocaleLowerCase(),r=document.getElementById("region").value,s=document.getElementById("schedule").value;let n=0;document.querySelectorAll("#jobGrid .card").forEach(c=>{const title=c.dataset.title.split("|").map(x=>x.toLocaleLowerCase()).join(" ");const ok=(!q||title.includes(q))&&(!r||c.dataset.region===r)&&(!s||c.dataset.schedule===s);c.style.display=ok?"flex":"none";if(ok)n++});document.getElementById("empty").style.display=n?"none":"block"}
+const jobInfo={sales:["sales","salesMeta","salarySales","salesDesc","Toshkent shahri","full"],designer:["designer","designerMeta","salaryDesigner","designerDesc","Samarqand","remote"],assistant:["assistant","assistantMeta","salaryAssistant","assistantDesc","Toshkent viloyati","flex"]};
+function details(id){const j=jobInfo[id],d=T[lang];document.getElementById("modalTitle").textContent=d[j[0]];document.getElementById("modalBody").innerHTML='<div class="detail-row"><b>'+d.location+':</b> '+j[4]+'</div><div class="detail-row"><b>'+d.schedule+':</b> '+d[j[5]]+'</div><div class="detail-row"><b>'+d.pay+':</b> '+d[j[2]]+'</div><p>'+d[j[3]]+'</p><div class="notice">'+d.noAccount+'</div>';document.getElementById("modal").classList.add("show")}
+function openModal(type){const d=T[lang];document.getElementById("modalTitle").textContent=type==="post"?d.post:d.login;document.getElementById("modalBody").innerHTML='<p>'+d.noAccount+'</p><div class="notice">ISHQADAM — demo</div>';document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter")filterJobs()});
+</script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const ISHQADAM_SUPABASE_URL = "https://dvzlchmnyprrphwqjsfe.supabase.co";
+const ISHQADAM_SUPABASE_KEY = "sb_publishable_rs5agJXY1huZGAtv_6TUrA_HAEbvZWi";
+
+const ishqadamDB = window.supabase.createClient(
+  ISHQADAM_SUPABASE_URL,
+  ISHQADAM_SUPABASE_KEY
+);
+
+console.log("ISHQADAM Supabase tayyor");
+</script>
+<script>
+function showModal(title, content) {
+  document.getElementById("modalTitle").textContent = title;
+  document.getElementById("modalBody").innerHTML = content;
+  document.getElementById("modal").classList.add("show");
+}
+
+function openModal(type) {
+  if (type === "post") {
+    ishqadamDB.auth.getSession().then(({ data, error }) => {
+      if (error) {
+        alert("Hisob holatini tekshirib bo‘lmadi: " + error.message);
+        return;
+      }
+      if (!data.session) {
+        showModal("Avval hisobga kiring", `
+          <p>Vakansiya joylash uchun hisobingizga kirishingiz kerak.</p>
+          <button class="btn primary" type="button" onclick="openModal('login')">Kirish yoki ro‘yxatdan o‘tish</button>
+        `);
+        return;
+      }
+      showModal("Vakansiya joylash", `
+        <form id="jobForm">
+          <label>Vakansiya nomi</label>
+          <input name="title" maxlength="120" required placeholder="Masalan: Sotuv menejeri">
+          <label>Vazifalar va talablar</label>
+          <textarea name="description" required rows="4" maxlength="5000" placeholder="Ish haqida batafsil yozing"></textarea>
+          <label>Hudud</label>
+          <select name="region" required>
+            <option value="">Hududni tanlang</option>
+            <option>Toshkent shahri</option><option>Toshkent viloyati</option>
+            <option>Samarqand</option><option>Farg‘ona</option><option>Xorazm</option>
+            <option>Buxoro</option><option>Andijon</option><option>Namangan</option>
+            <option>Qashqadaryo</option><option>Surxondaryo</option><option>Jizzax</option>
+            <option>Sirdaryo</option><option>Navoiy</option><option>Qoraqalpog‘iston</option>
+          </select>
+          <label>Tuman/shahar</label>
+          <input name="district" maxlength="100" placeholder="Tuman yoki shahar">
+          <label>Ish turi</label>
+          <select name="job_type" required>
+            <option value="full">To‘liq stavka</option>
+            <option value="part">Yarim kunlik</option>
+            <option value="remote">Masofaviy</option>
+            <option value="flex">Moslashuvchan</option>
+          </select>
+          <label>Maosh / to‘lov</label>
+          <input name="salary" maxlength="100" required placeholder="Masalan: 4–6 mln so‘m / oy">
+          <label>Kerakli xodimlar soni</label>
+          <input name="workers_needed" type="number" min="1" max="500" value="1" required>
+          <label>Ish vaqti</label>
+          <input name="work_hours" maxlength="100" placeholder="Masalan: 09:00–18:00">
+          <button class="btn primary" type="submit">Vakansiyani yuborish</button>
+          <p class="muted">E’lon moderatsiya uchun yuboriladi va tasdiqlangandan keyin hammaga ko‘rinadi.</p>
+        </form>
+      `);
+      const form = document.getElementById("jobForm");
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        const submit = form.querySelector('button[type="submit"]');
+        submit.disabled = true;
+        submit.textContent = "Yuborilmoqda...";
+        try {
+          const { data: sessionData, error: sessionError } = await ishqadamDB.auth.getSession();
+          if (sessionError) throw sessionError;
+          const user = sessionData.session && sessionData.session.user;
+          if (!user) throw new Error("Sessiya tugagan. Qayta hisobga kiring.");
+          const f = new FormData(form);
+          const payload = {
+            employer_id: user.id,
+            title: String(f.get("title")).trim(),
+            description: String(f.get("description")).trim(),
+            region: String(f.get("region")),
+            district: String(f.get("district") || "").trim(),
+            job_type: String(f.get("job_type")),
+            salary: String(f.get("salary")).trim(),
+            workers_needed: Number(f.get("workers_needed")),
+            work_hours: String(f.get("work_hours") || "").trim(),
+            status: "pending"
+          };
+          const { error } = await ishqadamDB.from("jobs").insert(payload);
+          if (error) throw error;
+          alert("Vakansiya yuborildi. Moderator tasdiqlagach e’lon qilinadi.");
+          closeModal();
+          form.reset();
+        } catch (err) {
+          alert("Vakansiya yuborilmadi: " + (err.message || "Noma’lum xato"));
+        } finally {
+          submit.disabled = false;
+          submit.textContent = "Vakansiyani yuborish";
+        }
+      };
+    });
+    return;
+  }
+
+  showModal("ISHQADAM — Hisobga kirish", `
+    <form id="registerForm">
+      <h3>Ro‘yxatdan o‘tish</h3>
+      <input name="name" maxlength="120" placeholder="Ism-familiya" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="password" type="password" placeholder="Parol (kamida 8 belgi)" minlength="8" required>
+      <select name="role" required>
+        <option value="worker">Ish qidiruvchi</option>
+        <option value="employer">Ish beruvchi</option>
+        <option value="student">Talaba</option>
+      </select>
+      <button class="btn primary" type="submit">Ro‘yxatdan o‘tish</button>
+    </form>
+    <hr>
+    <form id="loginForm">
+      <h3>Hisobga kirish</h3>
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="password" type="password" placeholder="Parol" required>
+      <button class="btn" type="submit">Kirish</button>
+    </form>
+    <p class="muted">Ro‘yxatdan o‘tgach, emailingizga kelgan tasdiqlash xatini tekshiring.</p>
+  `);
+
+  const register = document.getElementById("registerForm");
+  register.onsubmit = async (e) => {
+    e.preventDefault();
+    const button = register.querySelector('button[type="submit"]');
+    button.disabled = true;
+    try {
+      const f = new FormData(register);
+      const { error } = await ishqadamDB.auth.signUp({
+        email: String(f.get("email")).trim(),
+        password: String(f.get("password")),
+        options: {
+          emailRedirectTo: "https://ishqadam-oss.github.io/ishqadam/",
+          data: {
+            full_name: String(f.get("name")).trim(),
+            user_type: String(f.get("role"))
+          }
+        }
+      });
+      if (error) throw error;
+      alert("Ro‘yxatdan o‘tish so‘rovi yuborildi. Emailingizni tasdiqlang.");
+      register.reset();
+    } catch (err) {
+      alert("Ro‘yxatdan o‘tishda xato: " + (err.message || "Noma’lum xato"));
+    } finally {
+      button.disabled = false;
+    }
+  };
+
+  const login = document.getElementById("loginForm");
+  login.onsubmit = async (e) => {
+    e.preventDefault();
+    const button = login.querySelector('button[type="submit"]');
+    button.disabled = true;
+    try {
+      const f = new FormData(login);
+      const { error } = await ishqadamDB.auth.signInWithPassword({
+        email: String(f.get("email")).trim(),
+        password: String(f.get("password"))
+      });
+      if (error) throw error;
+      alert("Hisobga muvaffaqiyatli kirdingiz.");
+      closeModal();
+    } catch (err) {
+      alert("Kirishda xato: " + (err.message || "Noma’lum xato"));
+    } finally {
+      button.disabled = false;
+    }
+  };
+}
+
+function updateAuthButtons(session) {
+  const loginButton = document.getElementById("loginButton");
+  const logoutButton = document.getElementById("logoutButton");
+  const signedIn = Boolean(session && session.user);
+  if (loginButton) loginButton.hidden = signedIn;
+  if (logoutButton) logoutButton.hidden = !signedIn;
+}
+
+const logoutButton = document.getElementById("logoutButton");
+if (logoutButton) {
+  logoutButton.addEventListener("click", async () => {
+    logoutButton.disabled = true;
+    const { error } = await ishqadamDB.auth.signOut();
+    logoutButton.disabled = false;
+    if (error) alert("Hisobdan chiqishda xato: " + error.message);
+    else alert("Hisobdan chiqdingiz.");
+  });
+}
+
+ishqadamDB.auth.getSession().then(({ data, error }) => {
+  if (error) {
+    console.error("Sessiyani tekshirishda xato:", error.message);
+    return;
+  }
+  updateAuthButtons(data.session);
+});
+
+ishqadamDB.auth.onAuthStateChange((_event, session) => {
+  updateAuthButtons(session);
+});
+</script>
+</body>
+</html>
